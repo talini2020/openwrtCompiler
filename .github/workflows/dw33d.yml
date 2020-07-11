@@ -25,7 +25,6 @@ on:
 env:
   REPO_URL: https://github.com/openwrt/openwrt
   REPO_BRANCH: master
-  COMMIT_IDX: 33f7cb735300bd9a099995236ed768c8925fec75
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: dw33d.conf
   DIY_P1_SH: diy-part1.sh
@@ -51,6 +50,7 @@ jobs:
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
+        pwd
         sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
         sudo -E apt-get -qq update
         sudo -E apt-get -qq install $(curl -fsSL git.io/depends-ubuntu-1804)
@@ -73,13 +73,15 @@ jobs:
         #cd ..
         git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
+        pwd
 
     - name: Load custom feeds
       run: |
+        pwd
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
         chmod +x $DIY_P1_SH
-        cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
+        pwd
 
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
@@ -89,6 +91,7 @@ jobs:
 
     - name: Load custom configuration
       run: |
+        pwd
         [ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x $DIY_P2_SH
