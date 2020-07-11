@@ -13,10 +13,10 @@
 
 # Add a feed source
 #sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
-cd /workdir
+pwd
 git clone --depth 1 https://github.com/Lienol/openwrt -b dev-master lienolOpenwrt
 cp -r /workdir/lienolOpenwrt/package/network/services/ppp/* /workdir/openwrt/package/network/services/ppp/
 cp -r /workdir/lienolOpenwrt/package/network/services/shellsync /workdir/openwrt/package/network/services/
-git clone --depth 1 https://github.com/zxlhhyccc/bf-package-master -b dev-master zxlhhycccBfPackageMaster
+git clone --depth 1 https://github.com/zxlhhyccc/bf-package-master -b master zxlhhycccBfPackageMaster
 cp -r /workdir/zxlhhycccBfPackageMaster/zxlhhyccc/luci-app-syncdial /workdir/openwrt/package/
 cd openwrt
