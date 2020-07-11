@@ -17,4 +17,6 @@ cd /workdir
 git clone --depth 1 https://github.com/Lienol/openwrt -b dev-master lienolOpenwrt
 cp -r /workdir/lienolOpenwrt/package/network/services/ppp/* /workdir/openwrt/package/network/services/ppp/
 cp -r /workdir/lienolOpenwrt/package/network/services/shellsync /workdir/openwrt/package/network/services/
+git clone --depth 1 https://github.com/zxlhhyccc/bf-package-master -b dev-master zxlhhycccBfPackageMaster
+cp -r /workdir/zxlhhycccBfPackageMaster/zxlhhyccc/luci-app-syncdial /workdir/openwrt/package/
 cd openwrt
