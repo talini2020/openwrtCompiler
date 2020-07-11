@@ -23,7 +23,8 @@ on:
 #    types: started
 
 env:
-  REPO_URL: https://github.com/coolsnowwolf/lede
+  REPO_URL: https://github.com/openwrt/openwrt
+  REPO_BRANCH: master
   COMMIT_IDX: 33f7cb735300bd9a099995236ed768c8925fec75
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: dw33d.conf
@@ -63,13 +64,13 @@ jobs:
       working-directory: /workdir
       run: |
         df -hT $PWD
-        mkdir openwrt
-        cd openwrt
-        git init
-        git remote add wrt $REPO_URL
-        git fetch wrt $COMMIT_IDX
-        git reset --hard FETCH_HEAD
-        cd ..
+        #mkdir openwrt
+        #cd openwrt
+        #git init
+        #git remote add wrt $REPO_URL
+        #git fetch wrt $COMMIT_IDX
+        #git reset --hard FETCH_HEAD
+        #cd ..
         #git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
 
