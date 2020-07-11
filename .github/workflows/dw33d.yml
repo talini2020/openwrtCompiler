@@ -147,10 +147,7 @@ jobs:
         path: ${{ env.FIRMWARE }}
 
     - name: Hash firmwares
-      uses: theowenyoung/folder-hash@master
-      with:
-        path: |
-           ${{ env.FIRMWARE }}
+      run: cat ${FIRMWARE}/sha256sums
 
     - name: Upload firmware to cowtransfer
       if: steps.organize.outputs.status == 'success' && env.UPLOAD_COWTRANSFER == 'true' && !cancelled()
